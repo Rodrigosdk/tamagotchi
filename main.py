@@ -1,5 +1,6 @@
 import os
 import time
+import platform
 from tamagotchi.pet import Pet
 from tamagotchi.attributes import Attributes
 
@@ -9,6 +10,17 @@ print("""
 """)
 
 option = int(input(">>>"))
+
+def clear_termianal():
+    '''
+    Vai verificar qual o tipo de sistem operacional e
+    executar o comando de limpar tela.
+    '''
+    if platform.system() == 'Linux':
+        os.system('clear')
+
+    elif platform.system() == 'Windows':
+        os.system('cls')
 
 if option == 1:
     tamagotchi_name = input('Nome do tamagotchi: ')
@@ -30,7 +42,7 @@ if option == 1:
 
     while tamagotchi.get_age() != 70:
         #Limpar a tela
-        os.system('clear')
+        clear_termianal()
         
         #Mostar status
         tamagotchi_attributes.status()
@@ -56,12 +68,19 @@ if option == 1:
         if time_count_age >= TIME_AGE:
             age = tamagotchi_attributes.older(10)
             time_count_age = -TIME_RELOAD    
+        
+        if tamagotchi.get_hungry() == 0:
+            break
+
+        if tamagotchi.get_power() == 0:
+            break
 
         #adição de tempo percorido
         time_count_eat = time_count_eat + TIME_RELOAD
         time_count_sleep = time_count_sleep + TIME_RELOAD
         time_count_age = time_count_age + TIME_RELOAD 
-
-        print('Game over')
+    
+    print('Game over')
+    
     if option == 2:
         exit()
