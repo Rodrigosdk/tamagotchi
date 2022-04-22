@@ -20,10 +20,6 @@ class Attributes:
         '''
         Esse componente  vai fazer com que seja 
         possivel recaregar o valor da energia.
-
-        vai levar 20 segundos para cada ponto da enegia
-        ser restaurado vai para quando o valor da energia
-        for de 100.
         '''
         print("Estou com sono")
         ask_user = input("dormir? ")
