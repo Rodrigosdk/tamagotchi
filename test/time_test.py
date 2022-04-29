@@ -53,7 +53,7 @@ def test_must_denigrate_life_when_the_power_goes_out():
 
     tamagotchi_time.denigrate_attribut()
     
-    assert tamagotchi.life == 90
+    assert tamagotchi.life == 89
 
 def test_must_denigrate_life_when_the_hungry_goes_out():
     '''
