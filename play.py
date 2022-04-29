@@ -15,7 +15,7 @@ def clear_termianal():
         elif platform.system() == 'Windows':
             os.system('cls')
 
-# O tempo é formado por segundos * minutos * horas * dias
+# O tempo é formado por segundos * minutos * horas
 TIME_EAT = 60*60*3
 TIME_SLEEP = 60*60*15
 TIME_RELOAD = 60*10
@@ -36,7 +36,7 @@ def play():
 
     while tamagotchi.age < 70:
         #Limpar a tela
-        tamagotchi_time.clear_termianal()
+        clear_termianal()
 
         # Mudar valores dos status do tamagotchi
         tamagotchi_time.denigrate_attribut()
@@ -63,6 +63,10 @@ def play():
         if time_count_age >= TIME_AGE:
             tamagotchi_attributes.older(10)
             time_count_age = -TIME_RELOAD
+            
+        # Verificar se a vida é 0 caso sim ira morrer
+        if tamagotchi.life == 0:
+            break
 
         #adição de tempo percorido
         time_count_eat = time_count_eat + TIME_RELOAD
