@@ -4,47 +4,41 @@ class Attributes:
     def __init__(self, pet: pet):
         self.pet = pet
 
-    def eat(self):
+    def eat(self, feed):
         '''
         Esse componente  vai fazer com que seja 
         possivel modifcar o valor da fome. 
         '''
+        if feed == 'sim':
+            self.pet.hungry = 100
 
-        print("Estou com fome")
-        ask_user = input('alimentar?')
-
-        if ask_user == 'sim':
-            self.pet.set_hungry(100)
-
-    def sleep(self):
+    def sleep(self, sleep):
         '''
         Esse componente  vai fazer com que seja 
         possivel recaregar o valor da energia.
         '''
-        print("Estou com sono")
-        ask_user = input("dormir? ")
-
-        if ask_user == 'sim':
-            while self.pet.get_power() != 100:
-                self.pet.set_power(100)
-
-
+        if sleep == 'sim':
+            if self.pet.power != 100:
+                self.pet.power = 100
+            
     def older(self, age):
         '''
         Esse componente  vai fazer com que seja 
         somado a idade colocada com a idade atual. 
         '''
-        return self.pet.set_age(self.pet.get_age() + age)
+        self.pet.age += age
+        return self.pet.age
 
     def status(self):
         '''
-        vai printar na tela as informações do
+        vai retornar informações do
         tamagotchi.
         '''
-        print(
+        return (
             f'''
-    Nome: {self.pet.get_name()}
-    Fome: {self.pet.get_hungry()}
-    Idade: {self.pet.get_age()}
-    Energia: {self.pet.get_power()}
+    Nome: {self.pet.name}
+    vida: {self.pet.life}
+    Fome: {self.pet.hungry}
+    Idade: {self.pet.age}
+    Energia: {self.pet.power}
     ''')

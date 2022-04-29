@@ -7,55 +7,68 @@ class Pet:
 
     def __init__(self, name):
         self.__name = name
-    def get_power(self):
+    
+    @property
+    def power(self):
+        '''
+        Retorna o valor da energia
+        '''
         return self.__power
-
-    def get_name(self):
+    
+    @property
+    def name(self):
         '''
         Retornar o nome do Tamagotchi
         '''
         return self.__name
-
-    def get_age(self):
+    
+    @property
+    def age(self):
         '''
         Retornar a idade do Tamagotchi
         '''
         return self.__age
     
-    def get_life(self):
+    @property
+    def life(self):
         '''
         Retornar o valor da vida do Tamagotchi
         '''
         return self.__life
-
-    def get_hungry(self):
+    
+    @property
+    def hungry(self):
         '''
         Retornar o valor da fome do Tamagotchi
         '''
         return self.__hungry
 
-    def set_life(self, life_value):
+    @life.setter
+    def life(self, life_value):
         '''
         Modificar o valor da vida do Tamagotchi
         '''
         self.__life = life_value
         return self.__life
-        
-    def set_hungry(self, hungry_value):
+    
+    @hungry.setter
+    def hungry(self, hungry_value):
         '''
         Modificar o valor da fome do Tamagotchi
         '''
         self.__hungry = hungry_value
         return self.__hungry
 
-    def set_power(self, power_value):
+    @power.setter
+    def power(self, power_value):
         '''
         Modificar o valor da energia do Tamagotchi
         '''
         self.__power = power_value
         return self.__power
     
-    def set_age(self, age_value):
+    @age.setter
+    def age(self, age_value):
         '''
         Modificar a idade do Tamagotchi
         '''
