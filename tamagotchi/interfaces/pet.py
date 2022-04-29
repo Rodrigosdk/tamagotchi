@@ -20,20 +20,3 @@ class PetInterface(ABC):
     @abstractmethod
     def hungry(self) -> float:
         raise NotImplementedError
-
-    @abstractmethod
-    def life(self, life_value)-> float:
-        raise NotImplementedError
-    
-    @abstractmethod
-    def hungry(self, hungry_value)-> float:
-        raise NotImplementedError
-
-    @abstractmethod
-    def power(self, power_value)-> float:
-        raise NotImplementedError
-    
-    @abstractmethod
-    def age(self, age_value)-> int:
-        raise NotImplementedError
-    
