@@ -1,7 +1,8 @@
-from tamagotchi import pet
+from typing import Type
+from tamagotchi.interfaces.pet import PetInterface
 
 class Attributes:
-    def __init__(self, pet: pet):
+    def __init__(self, pet: Type[PetInterface]):
         self.pet = pet
 
     def eat(self, feed):

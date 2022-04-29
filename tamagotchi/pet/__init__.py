@@ -1,4 +1,8 @@
-class Pet:
+from tamagotchi.interfaces.pet import PetInterface
+
+
+
+class Pet(PetInterface):
     __name = ''
     __age = 0
     __power = 100

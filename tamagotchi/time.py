@@ -1,12 +1,14 @@
 import os
 import platform
 import time
+from typing import Type
+from tamagotchi.interfaces.pet import PetInterface
 
 from tamagotchi.pet import Pet
 
 
 class Time():
-    def __init__(self, pet:Pet) -> None:
+    def __init__(self, pet: Type[PetInterface]) -> None:
         self.pet = pet
 
     def sleep(self, time_reload):
