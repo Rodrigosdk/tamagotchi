@@ -25,6 +25,12 @@ class Pet(PetInterface):
         Retornar o nome do Tamagotchi
         '''
         return self.__name
+    @name.setter
+    def name(self, name_pet):
+        '''
+        Retornar o nome do Tamagotchi
+        '''
+        self.__name = name_pet
     
     @property
     def age(self):
