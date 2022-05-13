@@ -148,6 +148,7 @@ def main_menu():
                     sys.exit()
 
         pygame.display.update()
+        
 
 def death():
     while True:
@@ -155,7 +156,8 @@ def death():
 
         SCREEN.fill("black")
 
-        PLAY_TEXT = get_font(35).render("tchau tchau!!!! Até a proxima vez", True, "White")
+
+        PLAY_TEXT = get_font(35).render("Que pena seu bixinho morreu! :/", True, "White")
         PLAY_RECT = PLAY_TEXT.get_rect(center=(640, 260))
         SCREEN.blit(PLAY_TEXT, PLAY_RECT)
 
