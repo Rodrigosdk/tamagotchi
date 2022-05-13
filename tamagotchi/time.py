@@ -30,7 +30,8 @@ class Time():
         if self.pet.hungry > 0:
             self.pet.hungry -=  1
         else:
-            self.pet.life -= 1
+            if self.pet.life > 0:
+                self.pet.life -= 1
 
     def denigrate_power(self):
         '''
@@ -41,7 +42,15 @@ class Time():
         if self.pet.power > 0:
             self.pet.power -=  0.5
         else:
-            self.pet.life -= 10
+            if self.pet.life > 0:
+                self.pet.life -= 10
+
+    def denigrate_hygiene(self):
+        if self.pet.hygiene > 0:
+            self.pet.hygiene -=  1.5
+        else:
+            if self.pet.life > 0:
+                self.pet.life -= 1
 
     def denigrate_attribut(self):
         '''
@@ -50,3 +59,4 @@ class Time():
         '''
         self.denigrate_hungry()
         self.denigrate_power()
+        self.denigrate_hygiene()

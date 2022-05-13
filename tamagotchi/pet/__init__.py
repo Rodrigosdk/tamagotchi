@@ -8,10 +8,31 @@ class Pet(PetInterface):
     __power = 100
     __life = 100
     __hungry = 100
+    __force = 0
+    __hygiene = 100
 
     def __init__(self, name):
         self.__name = name
+
+    @property
+    def hygiene(self):
+        return self.__hygiene
     
+    @hygiene.setter
+    def hygiene(self, hygiene_v):
+        self.__hygiene = hygiene_v
+
+        return self.__hygiene
+    
+    @property
+    def force(self):
+        return self.__force
+    
+    @force.setter
+    def force(self,force_v):
+        self.__force = force_v
+        return self.__force
+
     @property
     def power(self):
         '''

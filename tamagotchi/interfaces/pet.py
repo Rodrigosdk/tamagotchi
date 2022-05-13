@@ -2,6 +2,14 @@ from abc import ABC, abstractmethod
 
 class PetInterface(ABC):
     @abstractmethod
+    def hygiene(self):
+        raise NotImplementedError
+        
+    @abstractmethod
+    def force(self):
+        raise NotImplementedError
+
+    @abstractmethod
     def power(self) -> float:
         raise NotImplementedError
     

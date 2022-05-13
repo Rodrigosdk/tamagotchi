@@ -5,21 +5,19 @@ class Attributes:
     def __init__(self, pet: Type[PetInterface]):
         self.pet = pet
 
-    def eat(self, feed):
+    def eat(self):
         '''
         Esse componente  vai fazer com que seja 
         possivel modifcar o valor da fome. 
         '''
-        if feed == 'sim':
-            self.pet.hungry = 100
+        self.pet.hungry = 100
 
-    def sleep(self, sleep):
+    def sleep(self):
         '''
         Esse componente  vai fazer com que seja 
         possivel recaregar o valor da energia.
         '''
-        if sleep == 'sim':
-            if self.pet.power != 100:
+        if self.pet.power != 100:
                 self.pet.power = 100
             
     def older(self, age):
@@ -29,6 +27,16 @@ class Attributes:
         '''
         self.pet.age += age
         return self.pet.age
+
+    def shower(self):
+        self.pet.hygiene = 100
+        return self.pet.hygiene
+    
+    def exercise(self):
+        self.pet.force += 1
+        self.pet.hygiene -= 10
+        self.pet.power -= 3
+        return self.pet.force
 
     def status(self):
         '''
