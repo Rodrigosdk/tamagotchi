@@ -34,10 +34,24 @@ def play():
 
         name = get_font(15).render(f'Nome: {tamagotchi.name}', True, "White")
         #age = get_font(15).render(f'Idade: {tamagotchi.age}', True, "White")
-        hungry = get_font(15).render(f'Fome: {tamagotchi.hungry}', True, "White")
-        life = get_font(15).render(f'Vida: {tamagotchi.life}', True, "White")
-        power = get_font(15).render(f'Energia: {tamagotchi.power}', True, "White")
-        hygiene = get_font(15).render(f'Higiene: {tamagotchi.hygiene}', True, "White")
+        if tamagotchi.hungry >= 0:
+            hungry = get_font(15).render(f'Fome: {tamagotchi.hungry}', True, "White")
+        else:
+            hungry = get_font(15).render(f'Fome: 0', True, "White")
+        
+        if tamagotchi.life >= 0:
+            life = get_font(15).render(f'Vida: {tamagotchi.life}', True, "White")
+        else:
+            life = get_font(15).render(f'Vida: 0', True, "White")
+        
+        if tamagotchi.power >=0:
+            power = get_font(15).render(f'Energia: {tamagotchi.power}', True, "White")
+        else:
+            power = get_font(15).render(f'Energia: 0', True, "White")
+        if tamagotchi.hygiene >= 0:
+            hygiene = get_font(15).render(f'Higiene: {tamagotchi.hygiene}', True, "White")
+        else:
+             hygiene = get_font(15).render(f'Higiene: 0', True, "White")
         force = get_font(15).render(f'Força: {tamagotchi.force}', True, "White")
 
         name_react = name.get_rect(center=(120, 50))
@@ -59,7 +73,9 @@ def play():
         # Mudar valores dos status do tamagotchi
         tamagotchi_time.denigrate_attribut()
         
-        img = pygame.image.load(os.path.join('assets', 'tamagochi.jpeg'))
+       
+        name_img = 'normal.jpeg'
+        img = pygame.image.load(os.path.join('assets', name_img))
         SCREEN.blit(img, (500, 80))
 
         #Tempo para atualizar informções
@@ -99,15 +115,32 @@ def play():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_food.checkForInput(PLAY_MOUSE_POS):
+
+                    name_img = 'fome.jpeg'
+                    img = pygame.image.load(os.path.join('assets', name_img))
+                    SCREEN.blit(img, (300, 20))
+                    
+                    pygame.time.wait(60*15)
                     tamagotchi_attributes.eat()
-                
+
                 if play_sleep.checkForInput(PLAY_MOUSE_POS):
+                    
+                    name_img = 'dormindo.jpeg'
+                    img = pygame.image.load(os.path.join('assets', name_img))
+                    SCREEN.blit(img, (300, 20))
+                    
+                    pygame.time.wait(60*15)
                     tamagotchi_attributes.sleep()
 
                 if play_exercise.checkForInput(PLAY_MOUSE_POS):
+                    
                     tamagotchi_attributes.exercise()
                 
                 if play_hygiene.checkForInput(PLAY_MOUSE_POS):
+                    img = pygame.image.load(os.path.join('assets', 'banho.jpeg'))
+                    SCREEN.blit(img, (500, 80))
+                    
+                    pygame.time.wait(60*15)
                     tamagotchi_attributes.shower()
                 
                 if play_back.checkForInput(PLAY_MOUSE_POS):
