@@ -31,7 +31,7 @@ def test_must_restore_power():
     '''
 
     tamagotchi.power = 50
-    attributes.sleep('sim')
+    attributes.sleep()
     assert tamagotchi.power == 100
 
 def test_must_not_restore_power():
@@ -41,7 +41,6 @@ def test_must_not_restore_power():
     '''
 
     tamagotchi.power = 50
-    attributes.sleep('não')
     assert tamagotchi.power != 100
 
 def test_must_restore_hungry():
@@ -50,7 +49,7 @@ def test_must_restore_hungry():
     restaurou o valor da fome
     '''
     tamagotchi.hungry = 50
-    attributes.eat('sim')
+    attributes.eat()
     assert tamagotchi.hungry == 100
 
 def test_must_not_restore_hungry():
@@ -59,9 +58,6 @@ def test_must_not_restore_hungry():
     não restaurou o valor da fome
     '''
     tamagotchi.hungry = 50
-
-    attributes.eat('não')
-    
     assert tamagotchi.hungry != 100
 
 def test_must_return_status_from_tamagotchi():
