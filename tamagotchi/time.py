@@ -40,14 +40,20 @@ class Time():
         Caso contrario ele vai subitrair 10 da vida
         '''
         if self.pet.power > 0:
-            self.pet.power -=  0.5
+            if self.pet.power <= 0:
+                self.pet.power =  0
+            else:
+                self.pet.power -=  0.5
         else:
             if self.pet.life > 0:
                 self.pet.life -= 10
 
     def denigrate_hygiene(self):
         if self.pet.hygiene > 0:
-            self.pet.hygiene -=  1.5
+            if self.pet.hygiene <= 0:
+                self.pet.hygiene =  0
+            else:   
+                self.pet.hygiene -=  1.5
         else:
             if self.pet.life > 0:
                 self.pet.life -= 1
