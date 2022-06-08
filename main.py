@@ -7,7 +7,7 @@ from tamagotchi.time import Time
 
 pygame.init()
 
-SCREEN = pygame.display.set_mode((1280, 520))
+SCREEN = pygame.display.set_mode((1100, 520))
 pygame.display.set_caption("Menu")
 
 BG = pygame.image.load("assets/Background.png")
@@ -55,7 +55,7 @@ def status(tamagotchi):
         SCREEN.blit(force, force_react)
         
         #Tempo para atualizar informções
-        pygame.time.wait(TIME_RELOAD)
+        pygame.time.delay(TIME_RELOAD)
 
 def play():
     pygame.display.set_caption("Game")
@@ -75,19 +75,19 @@ def play():
 
         name_img = 'normal.jpeg'
         img = pygame.image.load(os.path.join('assets', name_img))
-        SCREEN.blit(img, (500, 80))
+        SCREEN.blit(img, (400, 80))
         
         status(tamagotchi)
         
-        play_food = Button(image=None, pos=(1100, 50), 
+        play_food = Button(image=None, pos=(900, 50), 
                             text_input="Alimentar", font=get_font(25), base_color="White", hovering_color="Green")
-        play_sleep = Button(image=None, pos=(1100, 120), 
+        play_sleep = Button(image=None, pos=(900, 120), 
                             text_input="Dormir", font=get_font(25), base_color="White", hovering_color="Green")
-        play_exercise = Button(image=None, pos=(1100, 180), 
+        play_exercise = Button(image=None, pos=(900, 180), 
                             text_input="Exercitar", font=get_font(25), base_color="White", hovering_color="Green")
-        play_hygiene = Button(image=None, pos=(1100, 240), 
+        play_hygiene = Button(image=None, pos=(900, 240), 
                             text_input="Tomar banho", font=get_font(25), base_color="White", hovering_color="Green")
-        play_back = Button(image=None, pos=(1100, 300), 
+        play_back = Button(image=None, pos=(900, 300), 
                             text_input="BACK", font=get_font(25), base_color="White", hovering_color="Green")
 
 
@@ -116,7 +116,7 @@ def play():
 
                     name_img = 'fome.jpeg'
                     img = pygame.image.load(os.path.join('assets', name_img))
-                    SCREEN.blit(img, (300, 20))
+                    SCREEN.blit(img, (200, 20))
                     
                     pygame.time.wait(60*15)
                     tamagotchi_attributes.eat()
@@ -125,21 +125,21 @@ def play():
                     
                     name_img = 'dormindo.jpeg'
                     img = pygame.image.load(os.path.join('assets', name_img))
-                    SCREEN.blit(img, (300, 20))
+                    SCREEN.blit(img, (200, 20))
                     
                     pygame.time.wait(60*15)
                     tamagotchi_attributes.sleep()
 
                 if play_exercise.checkForInput(PLAY_MOUSE_POS):
                     img = pygame.image.load(os.path.join('assets', 'exercitando.jpeg'))
-                    SCREEN.blit(img, (300, 20))
+                    SCREEN.blit(img, (200, 20))
                     
                     pygame.time.wait(60*15)
                     tamagotchi_attributes.exercise()
                 
                 if play_hygiene.checkForInput(PLAY_MOUSE_POS):
                     img = pygame.image.load(os.path.join('assets', 'banho.jpeg'))
-                    SCREEN.blit(img, (500, 80))
+                    SCREEN.blit(img, (400, 80))
                     
                     pygame.time.wait(60*15)
                     tamagotchi_attributes.shower()
@@ -157,11 +157,11 @@ def main_menu():
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
         MENU_TEXT = get_font(100).render("Tamagotchi", True, "#b68f40")
-        MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
+        MENU_RECT = MENU_TEXT.get_rect(center=(550, 100))
 
-        PLAY_BUTTON = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(640, 250), 
+        PLAY_BUTTON = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(540, 250), 
                             text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        QUIT_BUTTON = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(640, 370), 
+        QUIT_BUTTON = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(540, 370), 
                             text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
