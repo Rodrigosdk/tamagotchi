@@ -18,22 +18,8 @@ TIME_RELOAD = 60*10
 def get_font(size): # Returns Press-Start-2P in the desired size
     return pygame.font.Font("assets/font.ttf", size)
 
-
-def play():
-    pygame.display.set_caption("Game")
-
-    #instância de propriedade
-    tamagotchi = Pet('majin boo')
-    tamagotchi_attributes = Attributes(tamagotchi)
-    tamagotchi_time = Time(tamagotchi)
-
-    while True:
-        PLAY_MOUSE_POS = pygame.mouse.get_pos()
-
-        SCREEN.fill("black")
-
+def status(tamagotchi):
         name = get_font(15).render(f'Nome: {tamagotchi.name}', True, "White")
-        #age = get_font(15).render(f'Idade: {tamagotchi.age}', True, "White")
         if tamagotchi.hungry >= 0:
             hungry = get_font(15).render(f'Fome: {tamagotchi.hungry}', True, "White")
         else:
@@ -55,7 +41,6 @@ def play():
         force = get_font(15).render(f'Força: {tamagotchi.force}', True, "White")
 
         name_react = name.get_rect(center=(120, 50))
-        #age_react = age.get_rect(center=(65, 100))
         hungry_react = hungry.get_rect(center=(75, 150))
         life_react = life.get_rect(center=(75, 200))
         power_react = power.get_rect(center=(100, 250))
@@ -63,23 +48,36 @@ def play():
         force_react = force.get_rect(center=(90, 350))
 
         SCREEN.blit(name, name_react)
-        #SCREEN.blit(age, age_react)
         SCREEN.blit(hungry, hungry_react)
         SCREEN.blit(life, life_react)
         SCREEN.blit(power, power_react)
         SCREEN.blit(hygiene, hygiene_react)
         SCREEN.blit(force, force_react)
+        
+        #Tempo para atualizar informções
+        pygame.time.wait(TIME_RELOAD)
+
+def play():
+    pygame.display.set_caption("Game")
+
+    #instância de propriedade
+    tamagotchi = Pet('majin boo')
+    tamagotchi_attributes = Attributes(tamagotchi)
+    tamagotchi_time = Time(tamagotchi)
+
+    while True:
+        PLAY_MOUSE_POS = pygame.mouse.get_pos()
+
+        SCREEN.fill("black")
 
         # Mudar valores dos status do tamagotchi
-        tamagotchi_time.denigrate_attribut()
-        
-       
+        tamagotchi_time.denigrate_attribut()        
+
         name_img = 'normal.jpeg'
         img = pygame.image.load(os.path.join('assets', name_img))
         SCREEN.blit(img, (500, 80))
-
-        #Tempo para atualizar informções
-        pygame.time.wait(TIME_RELOAD)
+        
+        status(tamagotchi)
         
         play_food = Button(image=None, pos=(1100, 50), 
                             text_input="Alimentar", font=get_font(25), base_color="White", hovering_color="Green")
@@ -105,7 +103,7 @@ def play():
         play_hygiene.update(SCREEN)
         play_exercise.update(SCREEN)
 
-        if tamagotchi.life == 0:
+        if tamagotchi.life <= 0:
             death()
 
         for event in pygame.event.get():
@@ -133,7 +131,10 @@ def play():
                     tamagotchi_attributes.sleep()
 
                 if play_exercise.checkForInput(PLAY_MOUSE_POS):
+                    img = pygame.image.load(os.path.join('assets', 'exercitando.jpeg'))
+                    SCREEN.blit(img, (300, 20))
                     
+                    pygame.time.wait(60*15)
                     tamagotchi_attributes.exercise()
                 
                 if play_hygiene.checkForInput(PLAY_MOUSE_POS):
