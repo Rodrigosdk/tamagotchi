@@ -118,7 +118,7 @@ def play():
                     img = pygame.image.load(os.path.join('assets', name_img))
                     SCREEN.blit(img, (200, 20))
                     
-                    pygame.time.wait(60*15)
+                    pygame.time.wait(100*10)
                     tamagotchi_attributes.eat()
 
                 if play_sleep.checkForInput(PLAY_MOUSE_POS):
@@ -127,21 +127,21 @@ def play():
                     img = pygame.image.load(os.path.join('assets', name_img))
                     SCREEN.blit(img, (200, 20))
                     
-                    pygame.time.wait(60*15)
+                    pygame.time.wait(100*10)
                     tamagotchi_attributes.sleep()
 
                 if play_exercise.checkForInput(PLAY_MOUSE_POS):
                     img = pygame.image.load(os.path.join('assets', 'exercitando.jpeg'))
                     SCREEN.blit(img, (200, 20))
                     
-                    pygame.time.wait(60*15)
+                    pygame.time.wait(100*10)
                     tamagotchi_attributes.exercise()
                 
                 if play_hygiene.checkForInput(PLAY_MOUSE_POS):
                     img = pygame.image.load(os.path.join('assets', 'banho.jpeg'))
                     SCREEN.blit(img, (400, 80))
                     
-                    pygame.time.wait(60*15)
+                    pygame.time.wait(100*10)
                     tamagotchi_attributes.shower()
                 
                 if play_back.checkForInput(PLAY_MOUSE_POS):
